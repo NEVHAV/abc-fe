@@ -1,0 +1,194 @@
+<title>{{ title }}</title>
+<main>
+    <div class="header">
+        <nav class="nav_1">
+            <div class="right">
+                <div class="" style="height: 35px; line-height: 0">
+                    <a style="padding-top: 0"><i class="material-icons" style="padding-top: 10px; line-height: 30px; width: 30px; display: inline; font-size: 15px">local_phone</i>{{ phoneNumber }}</a>
+                    <a>|</a>
+                    <a>Ngôn ngữ:</a>
+                </div>
+            </div>
+        </nav>
+        <nav class="nav_2">
+            <div class="row">
+                <div class="col s1"></div>
+                <div class="col s3">
+                    <h5 style="font-weight: bold">CÔNG TY TNHH ABC</h5>
+                    <h6 style="font-size: 10px">UY TÍN - TRÁCH NHIỆM - HIỆU QUẢ</h6>
+                </div>
+                <div class="right">
+                    <ul class="tabs header-tab navbar-right">
+                        <li class="" style="color: #c5d2e1" ng-repeat="category in categories"><a class="white-text" href="#cate{{ category.id_cate }}">{{ category.name }}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!--body-->
+    <div class="body center-align">
+        <!--slider-->
+        <div class="slider">
+            <ul class="slides">
+                <li>
+                    <img src="components/home/cover.jpg">
+                </li>
+                <li>
+                    <img src="components/home/cover2.jpg">
+                    <!--<div class="caption left-align">-->
+                        <!--<h3>Left Aligned Caption</h3>-->
+                        <!--<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>-->
+                    <!--</div>-->
+                </li>
+                <li>
+                    <img src="components/home/cover3.jpg">
+                </li>
+            </ul>
+        </div>
+
+        <!--post + latest post + advertisement-->
+        <div class="row main">
+            <div class="col s1"></div>
+            <!--post-->
+            <!--show: false-->
+            <div class="col s7" ng-hide="show()">
+                <table class="borderless white" >
+                    <tbody>
+                    <tr ng-repeat="category in categories" ng-init="getSubcategories(category.id_cate)">
+                        <td class="row">
+                            <div class="col s12">
+                                <ul class="tabs">
+                                    <li class="tab"><a class="black-text category" href="#cate{{ category.id_cate }}" ng-click="getPost(category.id_cate, 0); changeShow()">{{ category.name }}</a></li>
+                                    <li class="tab" ng-repeat="subcategory in subcategories[category.id_cate]"><a class="black-text subcategory" href="#sub{{subcategory.id_sub}}" ng-click="getPost(category.id_cate, subcategory.id_sub); changeShow()">{{ subcategory.name }}</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <!--post category-->
+                                <div id="cate{{ category.id_cate }}" class="row">
+                                    <div class="col s4">
+                                        <img class="cover_img" style="width: 200px; height: 200px" src="{{ catePosts[category.id_cate].cover }}">
+                                    </div>
+                                    <div class="col s8">
+                                        <!--<p class="post-title">cate {{ category.id_cate}}</p>-->
+                                        <p class="post-title">{{ catePosts[category.id_cate].title }}</p>
+                                        <p class="">{{ catePosts[category.id_cate].content }}</p>
+                                    </div>
+                                </div>
+                                <!--post subcategory-->
+                                <div id="sub{{ subcategory.id_sub }}" ng-repeat="subcategory in subcategories[category.id_cate]" class="row">
+                                    <div class="col s4">
+                                        <img class="cover_img" style="width: 200px; height: 200px" src="{{ posts[subcategory.id_sub].cover }}">
+                                    </div>
+                                    <div class="col s8">
+                                        <!--<p class="post-title">sub {{ subcategory.id_sub }}</p>-->
+                                        <p class="post-title">{{ posts[subcategory.id_sub].title }}</p>
+                                        <p class="">{{ posts[subcategory.id_sub].content }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!--show: true-->
+            <div class="col s7" ng-show="show()">
+                <!--show: true-->
+                <table class="borderless white">
+                    <tbody>
+                    <tr ng-repeat="category in categories" ng-init="getSubcategories(category.id_cate)">
+                        <td class="row">
+                            <div class="col s12">
+                                <ul class="tabs">
+                                    <li class="tab"><a class="black-text category" href="#show{{ category.id_cate }}" ng-init="getPost(category.id_cate, 0)" ng-click="changeShow()">{{ category.name }}</a></li>
+                                    <li class="tab" ng-repeat="subcategory in subcategories[category.id_cate]"><a class="black-text subcategory" href="#sub{{subcategory.id_sub}}" ng-click="getPost(category.id_cate, subcategory.id_sub); changeShow()">{{ subcategory.name }}</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <!--post category-->
+                                <div id="show{{ category.id_cate }}" class="row">
+                                    <div class="col s4">
+                                        <img class="cover_img" style="width: 200px; height: 200px" src="{{ catePosts[category.id_cate].cover }}">
+                                    </div>
+                                    <div class="col s8">
+                                        <p class="post-title">{{ catePosts[category.id_cate].title }}</p>
+                                        <p>{{ catePosts[category.id_cate].content }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!--latest post + advertisement-->
+            <div class="col s3">
+                <!--latest post-->
+                <div class="row">
+                    <div class="col s11" >
+                        <div style="background-color: #e8eaf6">
+                            <div style="height: 10px; background-color: #3f51b5"></div>
+                            <div class="black-text" style="height: 120px">
+                                <h6 style="font-weight: bold">TIN MỚI CẬP NHẬT</h6>
+                                <hr style="width: 200px">
+                                <table class="borderless" style="background-color: #e8eaf6">
+                                    <tbody>
+                                    <tr ng-repeat="latestPost in latestPosts">
+                                        <th style="font-size: 200%;padding-left: 20px; color: #3f51b5">0{{ $index + 1}}</th>
+                                        <th>
+                                            {{ latestPost.title }}<br>
+                                            <a style="font-size: 70%; font-weight: normal; color: lightslategrey">{{ latestPost.updated_at }}</a>
+                                        </th>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s1"></div>
+                </div>
+
+                <!--advertisement-->
+                <div class="row" style="padding-top: 250px">
+                    <div class="col s11" >
+                        <div style="background-color: #fce4ec; height: 200px">
+                            <div style="height: 10px; background-color: red">
+                            </div>
+                            <div class="black-text" style="height: 120px">
+                                <h6 style="font-weight: bold">HỖ TRỢ TRỰC TUYẾN</h6>
+                                <hr style="width: 200px">
+                                <h5 style="font-weight: bold">Hotline</h5>
+                                <h5 style="font-weight: bold; color: red">0912345678</h5>
+                                <hr style="width: 200px">
+                                <table class="borderless" style="background-color: #fce4ec">
+                                    <tbody>
+                                    <tr>
+                                        <th><i class="material-icons">account_circle</i></th>
+                                        <th>
+                                            Hoàng Vân (Ms)<br>
+                                            <a style="font-size: 70%; font-weight: normal; color: lightslategrey">0123456789</a>
+                                            <a style="font-size: 70%; font-weight: normal; color: lightslategrey">hoangvan@gmail.com</a>
+                                        </th>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s1"></div>
+        </div>
+
+    </div>
+
+    <!--footer-->
+    <div class="footer">
+        <nav class="nav_footer">
+        </nav>
+    </div>
+</main>
