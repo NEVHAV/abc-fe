@@ -1,0 +1,146 @@
+<title>{{ title }}</title>
+<main>
+    <div class="header">
+        <nav class="nav_1">
+            <div class="right">
+                <div class="" style="height: 35px; line-height: 0">
+                    <a style="padding-top: 0"><i class="material-icons" style="padding-top: 10px; line-height: 30px; width: 30px; display: inline; font-size: 15px">local_phone</i>{{ phoneNumber }}</a>
+                    <a>|</a>
+                    <a>Ngôn ngữ:</a>
+                </div>
+            </div>
+        </nav>
+        <nav class="nav_2">
+            <div class="row">
+                <div class="col s1"></div>
+                <div class="col s3" style="cursor: pointer" ui-sref="home" ui-sref-active="">
+                    <h5 style="font-weight: bold">CÔNG TY TNHH ABC</h5>
+                    <h6 style="font-size: 10px">UY TÍN - TRÁCH NHIỆM - HIỆU QUẢ</h6>
+                </div>
+                <div class="right">
+                    <ul class="tabs header-tab navbar-right">
+                        <li class="" style="color: #c5d2e1" ng-repeat="category in categories"><a class="white-text" href="#cate{{ category.id_cate }}">{{ category.name }}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col s8"></div>
+            </div>
+        </nav>
+    </div>
+
+    <!--body-->
+    <div class="body center-align">
+        <!--post-->
+        <div class="row main">
+            <div class="col s1"></div>
+            <!--post-->
+            <div class="col s7">
+                <div class="left-align" style="padding-top: 1.5em">
+                    <a class="black-text" style="font-weight: bold; font-size: 20px">{{ subname }}</a>
+                </div>
+                <table class="borderless white">
+                    <tbody>
+                    <tr ng-repeat="submenu in submenus">
+                        <td>
+                            <div class="row">
+                                <div class="col s4">
+                                    <img class="cover_img" style="width: 200px; height: 200px" src="{{ submenu.cover }}">
+                                </div>
+                                <div class="col s8" style="height: 12em; overflow: hidden">
+                                    <p class="post-title black-text" ng-click="showPost(submenu.id_post, submenu.title, submenu.id_sub)" href="#">{{ submenu.title }}</p>
+                                    <p class="">{{ submenu.content }}</p>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!--latest post + advertisement-->
+            <div class="col s3">
+                <!--latest post-->
+                <div class="row" style="padding-top: 30px">
+                    <div class="col s11" >
+                        <div style="background-color: #e8eaf6">
+                            <div style="height: 10px; background-color: #3f51b5"></div>
+                            <div class="black-text" style="height: 120px">
+                                <h6 style="font-weight: bold">TIN MỚI CẬP NHẬT</h6>
+                                <hr style="width: 200px">
+                                <table class="borderless" style="background-color: #e8eaf6">
+                                    <tbody>
+                                    <tr ng-repeat="latestPost in latestPosts">
+                                        <th style="font-size: 200%;padding-left: 20px; color: #3f51b5">0{{ $index + 1}}</th>
+                                        <th>
+                                            <a class="black-text" style="cursor: pointer" ng-click="showPost(latestPost.id_post, latestPost.title, latestPost.id_sub)">{{ latestPost.title }}</a><br>
+                                            <a style="font-size: 70%; font-weight: normal; color: lightslategrey">{{ latestPost.updated_at }}</a>
+                                        </th>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s1"></div>
+                </div>
+
+                <!--advertisement-->
+                <div class="row" style="padding-top: 250px">
+                    <div class="col s11" >
+                        <div style="background-color: #fce4ec; height: 200px">
+                            <div style="height: 10px; background-color: red">
+                            </div>
+                            <div class="black-text" style="height: 120px">
+                                <h6 style="font-weight: bold">HỖ TRỢ TRỰC TUYẾN</h6>
+                                <hr style="width: 200px">
+                                <h5 style="font-weight: bold">Hotline</h5>
+                                <h5 style="font-weight: bold; color: red">0912345678</h5>
+                                <hr style="width: 200px">
+                                <table class="borderless" style="background-color: #fce4ec">
+                                    <tbody>
+                                    <tr>
+                                        <th><i class="material-icons">account_circle</i></th>
+                                        <th>
+                                            Hoàng Vân (Ms)<br>
+                                            <a style="font-size: 70%; font-weight: normal; color: lightslategrey">0123456789</a>
+                                            <a style="font-size: 70%; font-weight: normal; color: lightslategrey">hoangvan@gmail.com</a>
+                                        </th>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s1"></div>
+        </div>
+
+    </div>
+
+    <!--footer-->
+    <div class="footer">
+        <nav class="nav_footer">
+            <div class="row">
+                <div class="col s1"></div>
+                <div class="col s6">
+                    <div style="font-size: 80%;line-height: 1.6; padding-top: 10px">Trường Trung cấp Kinh tế - Tài nguyên và Môi trường<br>
+                        CÔNG TY TRÁCH NHIỆM HỮU HẠN KTM<br>
+                        <br>
+                        Địa chỉ: nhà E, trường Đại học Sân khấu - Điện ảnh, Mai Dịch, Cầu Giấy, Hà Nội<br>
+                        Điện thoại: (024)22.121.140 | Email: congtyktm@gmail.com | Website: www.ktmgroup.com.vn<br>
+                    </div>
+                </div>
+                <div class="col s1"></div>
+                <div class="col s4" style="padding-top: 35px">
+                    <img style="height: 40px; width: 40px" src="components/home/logoFB.png">
+                    <a href="" ui-sref="test" ng-click="test2()" style="font-size: 120%;padding-top: -10px; font-style: oblique; text-decoration: underline">fb.com/congtyktm</a>
+                </div>
+            </div>
+            <div style="font-size: 80%;line-height: 1.6"><p class="center-align">GIẤY PHÉP HOẠT ĐỘNG DỊCH VỤ ĐƯA NGƯỜI LAO ĐỘNG ĐI LÀM VIỆC Ở NƯỚC NGOÀI SỐ 393/LĐTBXH-GP<br>
+                GIẤY CHỨNG NHẬN HOẠT ĐỘNG DỊCH VỤ TƯ VẤN DU HỌC SỐ 5710/CN-SGD&ĐT</p>
+            </div>
+        </nav>
+    </div>
+</main>

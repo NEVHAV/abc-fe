@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fad68891-e1e1-43be-8726-624666b6d762" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/myself/css/myself.css" afterPath="$PROJECT_DIR$/bower_components/myself/css/myself.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/home/homeController.js" afterPath="$PROJECT_DIR$/components/home/homeController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/home/homeView.html" afterPath="$PROJECT_DIR$/components/home/homeView.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/app.js" afterPath="$PROJECT_DIR$/scripts/app.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -89,7 +84,7 @@
         <entry file="file://$PROJECT_DIR$/components/home/homeController.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1470">
-              <caret line="70" column="8" lean-forward="true" selection-start-line="70" selection-start-column="8" selection-end-line="70" selection-end-column="8" />
+              <caret line="70" column="8" lean-forward="false" selection-start-line="70" selection-start-column="8" selection-end-line="70" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -98,7 +93,7 @@
       <file leaf-file-name="postView.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/components/post/postView.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="501">
+            <state relative-caret-position="21">
               <caret line="41" column="154" lean-forward="false" selection-start-line="41" selection-start-column="154" selection-end-line="41" selection-end-column="154" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#div#0;n#nav#1;n#div#0;n#main#0;n#!!top" expanded="true" />
@@ -407,7 +402,8 @@
       <workItem from="1525358325177" duration="12328000" />
       <workItem from="1525530939041" duration="8396000" />
       <workItem from="1525623386288" duration="17314000" />
-      <workItem from="1525676959412" duration="11000" />
+      <workItem from="1525676959412" duration="113000" />
+      <workItem from="1525677727942" duration="28000" />
     </task>
     <task id="LOCAL-00001" summary="02/05/18">
       <created>1525197902915</created>
@@ -416,11 +412,18 @@
       <option name="project" value="LOCAL" />
       <updated>1525197902915</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="07/05/18">
+      <created>1525677218786</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1525677218786</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="127748000" />
+    <option name="totallyTimeSpent" value="127878000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="952" y="0" width="976" height="1038" extended-state="0" />
@@ -455,7 +458,8 @@
   <component name="VcsManagerConfiguration">
     <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="true" />
     <MESSAGE value="02/05/18" />
-    <option name="LAST_COMMIT_MESSAGE" value="02/05/18" />
+    <MESSAGE value="07/05/18" />
+    <option name="LAST_COMMIT_MESSAGE" value="07/05/18" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1211,7 +1215,7 @@
     <entry file="file://$PROJECT_DIR$/components/home/homeController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1470">
-          <caret line="70" column="8" lean-forward="true" selection-start-line="70" selection-start-column="8" selection-end-line="70" selection-end-column="8" />
+          <caret line="70" column="8" lean-forward="false" selection-start-line="70" selection-start-column="8" selection-end-line="70" selection-end-column="8" />
           <folding />
         </state>
       </provider>
@@ -1301,7 +1305,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/components/post/postView.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
+        <state relative-caret-position="21">
           <caret line="41" column="154" lean-forward="false" selection-start-line="41" selection-start-column="154" selection-end-line="41" selection-end-column="154" />
           <folding>
             <element signature="n#style#0;n#div#1;n#div#0;n#nav#1;n#div#0;n#main#0;n#!!top" expanded="true" />
