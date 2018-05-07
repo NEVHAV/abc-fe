@@ -2,10 +2,11 @@
  * Created by NEVHAV on 19/04/18.
  */
 angular.module('abc-fe')
-    .controller ('homeController', function ($scope, $http, $timeout,API_URL) {
+    .controller ('homeController', function ($scope, $http, $timeout, API_URL, $state, $cookieStore, test) {
         $scope.title = 'ABC - Trang chủ';
         $scope.phoneNumber = '(+84) 24-888-888';
 
+        // materialize option
         $(document).ready(function(){
             $('.slider').slider({
                 height: 280,
@@ -39,24 +40,23 @@ angular.module('abc-fe')
             });
         };
 
-        // getPost
+        // getPosts
         $scope.posts = [];
         $scope.catePosts = [];
         $scope.getPost = function (cateId, sub) {
-            console.log(cateId + ',' + sub);
+            // console.log(cateId + ',' + sub);
             if (sub !==0 ) {
-                $http.get(API_URL + 'post/' + cateId + '/' + sub).then(function (response) {
+                $http.get(API_URL + 'posts/' + cateId + '/' + sub).then(function (response) {
                     $scope.posts[sub] = response.data.data;
-                    // console.log($scope.posts[sub]);
                 }, function (error) {
-                    console.log('Post error!');
+                    console.log('Posts error!');
                 });
             }
             else {
-                $http.get(API_URL + 'post/' + cateId).then(function (response) {
+                $http.get(API_URL + 'posts/' + cateId).then(function (response) {
                     $scope.catePosts[cateId] = response.data.data;
                 }, function (error) {
-                    console.log('Post error!');
+                    console.log('Posts error!');
                 });
             }
         };
@@ -74,5 +74,28 @@ angular.module('abc-fe')
             $scope.latestPosts = response.data.data;
         }, function (error) {
             console.log('Latest posts error!');
-        })
+        });
+
+        //show post
+        $scope.showPost = function ($postId, $title, $subId) {
+            $cookieStore.put('postId', $postId);
+            $cookieStore.put('postTitle', $title);
+            $cookieStore.put('subId', $subId);
+            $state.go('post.detail', {title: $title});
+        };
+
+        //show submenu
+        $scope.showSubmenu = function ($subId, $subname) {
+            $cookieStore.put('subId', $subId);
+            $cookieStore.put('subname', $subname);
+            $state.go('submenu.detail', {subcate: $subname});
+        };
+
+        //test
+        $scope.test2 = function () {
+            console.log(test.value);
+            test.value = 'value';
+            console.log(test.value);
+            $state.go('post.detail', {cate: 1, subcate: 1});
+        }
 });

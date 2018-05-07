@@ -3,9 +3,11 @@
  */
 angular.module('abc-fe', [
     'oc.lazyLoad',
-    'ui.router'
+    'ui.router',
+    'ngCookies'
 ])
     .constant('API_URL', 'http://localhost:8080/abc/')
+    .value('test', {value: '0'})
     .config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider, $stateProvider) {
         $urlRouterProvider.otherwise('/home');
         $stateProvider
@@ -18,6 +20,67 @@ angular.module('abc-fe', [
                         return $ocLazyLoad.load (
                             {
                                 files: ['components/home/homeController.js']
+                            }
+                        )
+                    }
+                }
+            })
+
+            .state('post', {
+                abstract: true,
+                url: '/post',
+                templateUrl: 'components/post/postView.html',
+                controller: 'postController',
+                resolve: {
+                    loadMyFiles: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load (
+                            {
+                                files: ['components/post/postController.js']
+                            }
+                        )
+                    }
+                }
+            })
+            .state('post.detail', {
+                url: '/:title',
+                templateUrl: 'components/post/postView.html',
+                controller: 'postController',
+                resolve: {
+                    loadMyFiles: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load (
+                            {
+                                files: ['components/post/postController.js']
+                            }
+                        )
+                    }
+                }
+            })
+
+            .state('submenu', {
+                abstract: true,
+                url: '/submenu',
+                templateUrl: 'components/submenu/submenuView.html',
+                controller: 'submenuController',
+                resolve: {
+                    loadMyFiles: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load (
+                            {
+                                files: ['components/submenu/submenuController.js']
+                            }
+                        )
+                    }
+                }
+            })
+            .state('submenu.detail', {
+                url: '/:subcate',
+                cache: false,
+                templateUrl: 'components/submenu/submenuView.html',
+                controller: 'submenuController',
+                resolve: {
+                    loadMyFiles: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load (
+                            {
+                                files: ['components/submenu/submenuController.js']
                             }
                         )
                     }

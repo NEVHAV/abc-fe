@@ -13,13 +13,14 @@
         <nav class="nav_2">
             <div class="row">
                 <div class="col s1"></div>
-                <div class="col s3">
+                <div class="col s3" style="cursor: pointer" ui-sref="home" ui-sref-active="">
                     <h5 style="font-weight: bold">CÔNG TY TNHH ABC</h5>
                     <h6 style="font-size: 10px">UY TÍN - TRÁCH NHIỆM - HIỆU QUẢ</h6>
                 </div>
                 <div class="right">
                     <ul class="tabs header-tab navbar-right">
-                        <li class="" style="color: #c5d2e1" ng-repeat="category in categories"><a class="white-text" href="#cate{{ category.id_cate }}">{{ category.name }}</a></li>
+                        <li class="" style="color: #c5d2e1" ng-repeat="category in categories"><a class="white-text" href="#cate{{ category.id_cate }}">{{ category.name }}</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -69,9 +70,8 @@
                                     <div class="col s4">
                                         <img class="cover_img" style="width: 200px; height: 200px" src="{{ catePosts[category.id_cate].cover }}">
                                     </div>
-                                    <div class="col s8">
-                                        <!--<p class="post-title">cate {{ category.id_cate}}</p>-->
-                                        <p class="post-title">{{ catePosts[category.id_cate].title }}</p>
+                                    <div class="col s8" style="height: 12em; overflow: hidden">
+                                        <p class="pointer post-title" ng-click="showPost(catePosts[category.id_cate].id_post, catePosts[category.id_cate].title, catePosts[category.id_cate].id_sub)" href="#">{{ catePosts[category.id_cate].title }}</p>
                                         <p class="">{{ catePosts[category.id_cate].content }}</p>
                                     </div>
                                 </div>
@@ -80,10 +80,13 @@
                                     <div class="col s4">
                                         <img class="cover_img" style="width: 200px; height: 200px" src="{{ posts[subcategory.id_sub].cover }}">
                                     </div>
-                                    <div class="col s8">
-                                        <!--<p class="post-title">sub {{ subcategory.id_sub }}</p>-->
-                                        <p class="post-title">{{ posts[subcategory.id_sub].title }}</p>
-                                        <p class="">{{ posts[subcategory.id_sub].content }}</p>
+                                    <div class="col s8" style="height: 12em; overflow: hidden">
+                                        <p class="pointer post-title" ng-click="showPost(posts[subcategory.id_sub].id_post, posts[subcategory.id_sub].title, subcategory.id_sub)" href="#">{{ posts[subcategory.id_sub].title }}</p>
+                                        <p>{{ posts[subcategory.id_sub].content }}</p>
+                                    </div>
+                                    <div class="col s4"></div>
+                                    <div class="col s8" style="padding-top: 1em">
+                                        <a class="pointer left-align blue-text" href="#" ng-click="showSubmenu(subcategory.id_sub, subcategory.name)">Xem thêm {{ subcategory.name }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -95,7 +98,6 @@
 
             <!--show: true-->
             <div class="col s7" ng-show="show()">
-                <!--show: true-->
                 <table class="borderless white">
                     <tbody>
                     <tr ng-repeat="category in categories" ng-init="getSubcategories(category.id_cate)">
@@ -112,8 +114,8 @@
                                     <div class="col s4">
                                         <img class="cover_img" style="width: 200px; height: 200px" src="{{ catePosts[category.id_cate].cover }}">
                                     </div>
-                                    <div class="col s8">
-                                        <p class="post-title">{{ catePosts[category.id_cate].title }}</p>
+                                    <div class="col s8" style="height: 12em; overflow: hidden">
+                                        <p class="pointer post-title" ng-click="showPost(catePosts[category.id_cate].id_post, catePosts[category.id_cate].title, catePosts[category.id_cate].id_sub)" href="#">{{ catePosts[category.id_cate].title }}</p>
                                         <p>{{ catePosts[category.id_cate].content }}</p>
                                     </div>
                                 </div>
@@ -139,7 +141,7 @@
                                     <tr ng-repeat="latestPost in latestPosts">
                                         <th style="font-size: 200%;padding-left: 20px; color: #3f51b5">0{{ $index + 1}}</th>
                                         <th>
-                                            {{ latestPost.title }}<br>
+                                            <a class="black-text" style="cursor: pointer" ng-click="showPost(latestPost.id_post, latestPost.title, latestPost.id_sub)">{{ latestPost.title }}</a><br>
                                             <a style="font-size: 70%; font-weight: normal; color: lightslategrey">{{ latestPost.updated_at }}</a>
                                         </th>
                                     </tr>
@@ -202,7 +204,7 @@
                 <div class="col s1"></div>
                 <div class="col s4" style="padding-top: 35px">
                     <img style="height: 40px; width: 40px" src="components/home/logoFB.png">
-                    <a href="" style="font-size: 120%;padding-top: -10px; font-style: oblique; text-decoration: underline">fb.com/congtyktm</a>
+                    <a href="" ng-click="test2()" style="font-size: 120%;padding-top: -10px; font-style: oblique; text-decoration: underline">fb.com/congtyktm</a>
                 </div>
             </div>
             <div style="font-size: 80%;line-height: 1.6"><p class="center-align">GIẤY PHÉP HOẠT ĐỘNG DỊCH VỤ ĐƯA NGƯỜI LAO ĐỘNG ĐI LÀM VIỆC Ở NƯỚC NGOÀI SỐ 393/LĐTBXH-GP<br>
