@@ -12,6 +12,22 @@ angular.module('abc-fe')
             });
         }, 1000);
 
+        //language
+        $scope.lang = $cookieStore.get('lang');
+        if ($scope.lang === null){
+            $scope.lang = 'vn';
+        }
+        $cookieStore.put('lang', $scope.lang);
+        console.log($scope.lang);
+        $scope.changeLang = function (id_lang) {
+            if ($scope.lang !== id_lang){
+                $scope.lang = id_lang;
+                console.log($scope.lang);
+                $cookieStore.put('lang', $scope.lang);
+                $state.reload();
+            }
+        };
+
         $scope.subId = $cookieStore.get('subId');
         $scope.subname = $cookieStore.get('subname');
 
@@ -19,14 +35,14 @@ angular.module('abc-fe')
         $scope.phoneNumber = '(+84) 24-888-888';
 
         //get submenu
-        $http.get(API_URL + 'submenu/' + $scope.subId).then(function (response) {
+        $http.get(API_URL + $scope.lang + '/' + 'submenu/' + $scope.subId).then(function (response) {
             $scope.submenus = response.data.data;
         }, function (error) {
             console.log('Submenus error!');
         });
 
         //get categories
-        $http.get(API_URL + 'categories').then(function (response) {
+        $http.get(API_URL + $scope.lang + '/' + 'categories').then(function (response) {
             $scope.categories = response.data.data;
         }, function (error) {
             console.log('Categories error!');
@@ -47,7 +63,7 @@ angular.module('abc-fe')
         };
 
         // getLatestPosts
-        $http.get(API_URL + 'latestPosts/').then(function (response) {
+        $http.get(API_URL + $scope.lang + '/' + 'latestPosts/').then(function (response) {
             $scope.latestPosts = response.data.data;
         }, function (error) {
             console.log('Latest posts error!');

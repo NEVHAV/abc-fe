@@ -6,7 +6,10 @@
                 <div class="" style="height: 35px; line-height: 0">
                     <a style="padding-top: 0"><i class="material-icons" style="padding-top: 10px; line-height: 30px; width: 30px; display: inline; font-size: 15px">local_phone</i>{{ phoneNumber }}</a>
                     <a>|</a>
-                    <a>Ngôn ngữ:</a>
+                    <a>Ngôn ngữ:
+                        <img ng-click="changeLang('vn')" src="image/vn_icon.png" style="height: 15px; width: auto; cursor: pointer">
+                        <img ng-click="changeLang('jp')" src="image/jp_icon.png" style="height: 15px; width: auto; cursor: pointer">
+                    </a>
                 </div>
             </div>
         </nav>

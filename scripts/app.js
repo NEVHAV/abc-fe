@@ -6,7 +6,7 @@ angular.module('abc-fe', [
     'ui.router',
     'ngCookies'
 ])
-    .constant('API_URL', 'http://localhost:8080/abc/')
+    .constant('API_URL', 'http://localhost:8080/abc/api/')
     .value('test', {value: '0'})
     .config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider, $stateProvider) {
         $urlRouterProvider.otherwise('/home');
@@ -73,7 +73,6 @@ angular.module('abc-fe', [
             })
             .state('submenu.detail', {
                 url: '/:subcate',
-                cache: false,
                 templateUrl: 'components/submenu/submenuView.html',
                 controller: 'submenuController',
                 resolve: {

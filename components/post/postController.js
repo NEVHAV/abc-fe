@@ -12,6 +12,20 @@ angular.module('abc-fe')
             });
         }, 1000);
 
+        //language
+        $scope.lang = $cookieStore.get('lang');
+        if ($scope.lang === null){
+            $scope.lang = 'vn';
+        }
+        $cookieStore.put('lang', $scope.lang);
+        $scope.changeLang = function (id_lang) {
+            if ($scope.lang !== id_lang){
+                $scope.lang = id_lang;
+                $cookieStore.put('lang', $scope.lang);
+                $state.reload();
+            }
+        };
+
         //header
         $scope.postId = $cookieStore.get('postId');
         $scope.title = $cookieStore.get('postTitle');
@@ -21,14 +35,14 @@ angular.module('abc-fe')
         $scope.phoneNumber = '(+84) 24-888-888';
 
         //get post detail
-        $http.get(API_URL + 'postDetail/' + $scope.postId).then(function (response) {
+        $http.get(API_URL + $scope.lang + '/' + 'postDetail/' + $scope.postId).then(function (response) {
             $scope.post = response.data.data[0];
         }, function (error) {
             console.log('Post detail error!');
         });
 
         //get categories
-        $http.get(API_URL + 'categories').then(function (response) {
+        $http.get(API_URL + $scope.lang + '/' + 'categories').then(function (response) {
             $scope.categories = response.data.data;
         }, function (error) {
             console.log('Categories error!');
@@ -50,14 +64,14 @@ angular.module('abc-fe')
         };
 
         // getLatestPosts
-        $http.get(API_URL + 'latestPosts/').then(function (response) {
+        $http.get(API_URL + $scope.lang + '/' + 'latestPosts/').then(function (response) {
             $scope.latestPosts = response.data.data;
         }, function (error) {
             console.log('Latest posts error!');
         });
 
         //getBreadcrumbs
-        $http.get(API_URL + 'breadcrumbs/' + $scope.IdSub).then(function (response) {
+        $http.get(API_URL + $scope.lang + '/' + 'breadcrumbs/' + $scope.IdSub).then(function (response) {
             $scope.breadcrumbs = response.data.data;
         }, function (error) {
             console.log('Breadbrumbs error!');
