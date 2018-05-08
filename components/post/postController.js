@@ -14,7 +14,7 @@ angular.module('abc-fe')
 
         //language
         $scope.lang = $cookieStore.get('lang');
-        if ($scope.lang === null){
+        if ($scope.lang !== 'vn' && $scope.lang !== 'jp'){
             $scope.lang = 'vn';
         }
         $cookieStore.put('lang', $scope.lang);
